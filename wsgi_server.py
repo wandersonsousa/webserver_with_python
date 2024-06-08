@@ -1,7 +1,7 @@
 import io
 import socket
 import sys
-
+import time
 
 # This is a server code to run wsgi complient applications(django, flask, ...)
 # It will handle sockets connections
@@ -60,6 +60,8 @@ class WSGIServer(object):
         # It's time to call our application callable and get
         # back a result that will become HTTP response body
         result = self.application(env, self.start_response)
+
+        time.sleep(3)  # sleep and block the process for 60 seconds
 
         # Construct a response and send it back to the client
         self.finish_response(result)
